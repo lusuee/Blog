@@ -1,0 +1,23 @@
+package db;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+/**
+ * @author ∫Õ”®Ω‹
+ * ªÒ»°sqlSessionFactory
+ */
+public class DBUtil {
+
+	public static SqlSessionFactory getSession() throws IOException {
+		String resource = "xml/Configuration.xml";
+		InputStream inputStream =  Resources.getResourceAsStream(resource);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+		return sqlSessionFactory;
+	}
+	
+}
