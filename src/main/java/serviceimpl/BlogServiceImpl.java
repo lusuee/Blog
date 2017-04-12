@@ -20,4 +20,9 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.queryBlog();
 	}
 
+	@Override
+	public void addBlog(Blog blog) {
+		blogDao.addBlog(blog);
+	}
+
 }

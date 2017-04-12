@@ -6,7 +6,7 @@ import entity.Blog;
 
 public interface BlogDao {
 
-	void addBlog();
+	void addBlog(Blog blog);
 	
 	Blog queryBlogById();
 	

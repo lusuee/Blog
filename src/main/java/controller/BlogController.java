@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import entity.Blog;
 import service.BlogService;
 
 @Controller
@@ -17,7 +18,7 @@ public class BlogController {
 	@RequestMapping
 	public String queryBlog(Model model) {
 		model.addAttribute("blogList", blogService.queryAll());
-		return "/blog/showBlog";
+		return "/blog/blogList";
 	}
 	
 	@RequestMapping("/add")
@@ -27,6 +28,10 @@ public class BlogController {
 	
 	@RequestMapping("/doAdd")
 	public String doAdd(String title, String content) {
+		Blog blog = new Blog();
+		blog.setTitle(title);
+		blog.setContent(content);
+		blogService.addBlog(blog);
 		return "redirect:/blog";
 	}
 }

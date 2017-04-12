@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-<title>Insert title here</title>
+<title>博客列表</title>
 </head>
 <body>
 	<jsp:include page="../general/head.jsp"></jsp:include>
@@ -27,7 +26,7 @@
 			<tbody>
 				<c:forEach items="${blogList }" var="blog">
 					<tr>
-						<td><c:out value="${blog.title }"></c:out></td>
+						<td><a style="text-decoration: none;" href=""><c:out value="${blog.title }"></c:out></a></td>
 						<td><c:out value="${blog.comment }"></c:out></td>
 					</tr>
 				</c:forEach>

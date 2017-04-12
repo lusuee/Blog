@@ -20,8 +20,9 @@ public class BlogDaoImpl implements BlogDao {
 	}
 	
 	@Override
-	public void addBlog() {
-		
+	public void addBlog(Blog blog) {
+		sqlSession.insert("blog.insert", blog);
+		sqlSession.commit();
 	}
 
 	@Override
