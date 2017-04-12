@@ -25,4 +25,8 @@ public class BlogController {
 		return "/blog/newBlog";
 	}
 	
+	@RequestMapping("/doAdd")
+	public String doAdd(String title, String content) {
+		return "redirect:/blog";
+	}
 }

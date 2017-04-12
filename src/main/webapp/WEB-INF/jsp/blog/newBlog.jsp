@@ -7,12 +7,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../resources/css/wangEditor.min.css">
 <link rel="stylesheet" href="../resources/css/newblog.css">
+<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
 <link href="../resources/css/prettify.css" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="../resources/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 <title>新建博客</title>
 </head>
@@ -20,82 +19,79 @@
 	<jsp:include page="../general/head.jsp"></jsp:include>
 	<!-- 博客表单 -->
 	<div class="container">
-		<form>
+		<form action="${pageContext.request.contextPath }/blog/doAdd">
 		  <div class="form-group">
 		    <label for="title">标题</label>
-		    <input type="text" class="form-control" id="title">
+		    <input style="width: 400px; height: 27px;"  type="text" class="form-control" id="title" name="title">
 		  </div>
 		  <div class="form-group">
+		  	<label for="editor">标题</label>
 		    <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
-      <div class="btn-group">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-          </ul>
-        </div>
-      <div class="btn-group">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-          <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
-          <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
-          <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
-          </ul>
-      </div>
-      <div class="btn-group">
-        <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
-        <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
-        <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
-        <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
-      </div>
-      <div class="btn-group">
-        <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
-        <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
-        <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
-        <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a>
-      </div>
-      <div class="btn-group">
-        <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
-        <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
-        <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
-        <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
-      </div>
-      <div class="btn-group">
-		  <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
-		    <div class="dropdown-menu input-append">
-			    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
-			    <button class="btn" type="button">Add</button>
-        </div>
-        <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
-
-      </div>
-      
-      <div class="btn-group">
-        <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
-        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
-      </div>
-      <div class="btn-group">
-        <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
-        <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
-      </div>
-      <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
-    </div>
-
-    <div id="editor">
-      Go ahead&hellip;
-    </div>
+	      <div class="btn-group">
+	        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+	          </ul>
+	        </div>
+	      <div class="btn-group">
+	        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+	          <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+	          <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+	          <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+	          </ul>
+	      </div>
+	      <div class="btn-group">
+	        <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+	        <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+	        <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
+	        <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+	      </div>
+	      <div class="btn-group">
+	        <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
+	        <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
+	        <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
+	        <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a>
+	      </div>
+	      <div class="btn-group">
+	        <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+	        <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+	        <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+	        <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+	      </div>
+	      <div class="btn-group">
+			  <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
+			    <div class="dropdown-menu input-append">
+				    <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
+				    <button class="btn" type="button">Add</button>
+	        </div>
+	        <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
+	      </div>
+	      <div class="btn-group">
+	        <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
+	        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+	      </div>
+	      <div class="btn-group">
+	        <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+	        <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+	      </div>
+	      <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
+	    </div>
+			<textarea id="editor" name="content" ></textarea>
 		  </div>
-		  <button type="submit" class="btn btn-default">提交</button>
+		  <button style="float: right;" type="submit" class="btn btn-default">提交</button>
 		</form>
 	</div>
+	
 	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../resources/js/bootstrap-wysiwyg.js"></script>
 	<script type="text/javascript" src="../resources/js/jquery.hotkeys.js"></script>
 	
 	<script type="text/javascript">
-		$('#editor').wysiwyg();
-	</script>
-	
-	<script>
+	  //富文本组件
+	  $('#editor').wysiwyg();
+	  
+	  //富文本组件功能
 	  $(function(){
 	    function initToolbarBootstrapBindings() {
 	      var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 

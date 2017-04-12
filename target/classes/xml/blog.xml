@@ -9,4 +9,7 @@
 		SELECT * FROM blog
 	</select>
 	
+	<insert id="insert">
+		INSERT INTO blog(title, content, comment) VALUES(?, ?, ?)
+	</insert>
 </mapper>
