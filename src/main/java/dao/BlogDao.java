@@ -8,8 +8,12 @@ public interface BlogDao {
 
 	void addBlog(Blog blog);
 	
-	Blog queryBlogById();
+	Blog queryBlogById(String id);
 	
 	List<Blog> queryBlog();
+	
+	void deleteBlogById(int id);
+	
+	void editBlog(Blog blog);
 	
 }

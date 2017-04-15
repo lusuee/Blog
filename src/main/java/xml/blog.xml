@@ -9,7 +9,19 @@
 		SELECT * FROM blog
 	</select>
 	
+	<select id="findById" parameterType="String" resultType="entity.Blog">
+		SELECT * FROM blog WHERE id = #{id}
+	</select>
+	
 	<insert id="insert" parameterType="entity.Blog">
 		INSERT INTO blog(title, content, comment) VALUES(#{title}, #{content}, #{comment})
 	</insert>
+	
+	<update id="editBlog" parameterType="entity.Blog">
+		UPDATE blog SET title = #{title}, content=#{content} WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM blog WHERE id = #{id}
+	</delete>
 </mapper>

@@ -15,14 +15,24 @@ public class BlogServiceImpl implements BlogService {
 	@Autowired
 	private BlogDao blogDao;
 	
-	@Override
 	public List<Blog> queryAll() {
 		return blogDao.queryBlog();
 	}
 
-	@Override
 	public void addBlog(Blog blog) {
 		blogDao.addBlog(blog);
+	}
+
+	public Blog queryById(String id) {
+		return blogDao.queryBlogById(id);
+	}
+
+	public void deleteById(int id) {
+		blogDao.deleteBlogById(id);
+	}
+
+	public void editBlog(Blog blog) {
+		blogDao.editBlog(blog);
 	}
 
 }

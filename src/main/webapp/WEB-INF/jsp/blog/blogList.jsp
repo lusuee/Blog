@@ -19,15 +19,17 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>标题</th>
-					<th>时间</th>
+					<th width="70%">标题</th>
+					<th width="10%">时间</th>
+					<th width="20%">操作</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${blogList }" var="blog">
 					<tr>
-						<td><a style="text-decoration: none;" href=""><c:out value="${blog.title }"></c:out></a></td>
+						<td><a style="text-decoration: none;" href="${pageContext.request.contextPath }/blog/${blog.id}"><c:out value="${blog.title }"></c:out></a></td>
 						<td><c:out value="${blog.comment }"></c:out></td>
+						<td><a href="${pageContext.request.contextPath }/blog/edit/${blog.id}">编辑</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/blog/delete/${blog.id}">删除</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

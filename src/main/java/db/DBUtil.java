@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 /**
- * @author ºÍÓ¨½Ü
- * »ñÈ¡sqlSessionFactory
+ * @author ï¿½ï¿½Ó¨ï¿½ï¿½
+ * ï¿½ï¿½È¡sqlSessionFactory
  */
 public class DBUtil {
 

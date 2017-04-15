@@ -17,22 +17,28 @@ public class BlogDaoImpl implements BlogDao {
 	
 	public BlogDaoImpl() throws IOException {
 		this.sqlSession = DBUtil.getSession().openSession();
+		sqlSession.commit(true);
 	}
 	
-	@Override
 	public void addBlog(Blog blog) {
 		sqlSession.insert("blog.insert", blog);
-		sqlSession.commit();
 	}
 
-	@Override
-	public Blog queryBlogById() {
-		return null;
+	public Blog queryBlogById(String id) {
+		return sqlSession.selectOne("findById", id);
 	}
 
-	@Override
 	public List<Blog> queryBlog() {
 		return sqlSession.selectList("blog.findAll");
 	}
 
+	public void deleteBlogById(int id) {
+		sqlSession.delete("deleteById", id);
+	}
+
+	public void editBlog(Blog blog) {
+		sqlSession.update("", "");
+	}
+
+	
 }

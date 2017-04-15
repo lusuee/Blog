@@ -7,10 +7,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/wangEditor.min.css">
 <link rel="stylesheet" href="../resources/css/newblog.css">
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<link href="../resources/css/prettify.css" rel="stylesheet">
+<link href="/Blog/resources/css/prettify.css" rel="stylesheet">
 <link href="../resources/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 <title>新建博客</title>
@@ -19,13 +18,16 @@
 	<jsp:include page="../general/head.jsp"></jsp:include>
 	<!-- 博客表单 -->
 	<div class="container">
-		<form action="${pageContext.request.contextPath }/blog/doAdd">
+		<form id="newForm" action="${pageContext.request.contextPath }/blog/doAdd" method="post">
+			<input type="hidden" id="content" name="content" value="">
+		
 		  <div class="form-group">
 		    <label for="title">标题</label>
+		    <br>
 		    <input style="width: 400px; height: 27px;"  type="text" class="form-control" id="title" name="title">
 		  </div>
 		  <div class="form-group">
-		  	<label for="editor">标题</label>
+		  	<label for="editor">内容</label>
 		    <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
 	      <div class="btn-group">
 	        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
@@ -76,9 +78,16 @@
 	      </div>
 	      <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
 	    </div>
-			<textarea id="editor" name="content" ></textarea>
+	    	<div id="editor"></div>
 		  </div>
-		  <button style="float: right;" type="submit" class="btn btn-default">提交</button>
+		  <div class="row">
+		  	<div class="col-md-6" style="text-align: right">
+			  <input class="btn btn-default" type="button" onclick="dealEncoding()" value="提交">
+			</div>
+			<div class="col-md-6">
+			  <input class="btn btn-default" type="button" onclick="dealEncoding()" value="重置">
+		  	</div>
+		  </div>
 		</form>
 	</div>
 	
@@ -86,8 +95,16 @@
 	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../resources/js/bootstrap-wysiwyg.js"></script>
 	<script type="text/javascript" src="../resources/js/jquery.hotkeys.js"></script>
+	<script type="text/javascript" src="../resources/js/jquery.base64.js"></script>
 	
 	<script type="text/javascript">
+	  //处理富文本内容，解决中文乱码的问题
+	  $.base64.utf8encode=true;
+	  function dealEncoding() {
+		  $("#content").val($("#editor").html());
+		  $("#newForm").submit();
+	  }
+	  
 	  //富文本组件
 	  $('#editor').wysiwyg();
 	  

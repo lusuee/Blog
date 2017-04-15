@@ -12,7 +12,6 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	private PersonDao personDao;
 
-	@Override
 	public void addPerson() {
 		personDao.addPerson();
 	}

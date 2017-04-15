@@ -15,7 +15,6 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	private MovieDao movieDao;
 	
-	@Override
 	public List<Map<String, Object>> getMovies() {
 		return movieDao.getMovies();
 	}
