@@ -28,11 +28,12 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/doAdd")
-	public String doAdd(String title, String content) {
-		Blog blog = new Blog();
-		blog.setTitle(title);
-		blog.setContent(content);
-		blogService.addBlog(blog);
+	public String doAdd(Blog blog) {
+		if ("".equals(blog.getId())) {
+			blogService.addBlog(blog);
+		} else {
+			blogService.editBlog(blog);
+		}
 		return "redirect:/blog";
 	}
 	

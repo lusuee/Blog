@@ -7,10 +7,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/newblog.css">
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
-<link href="/Blog/resources/css/prettify.css" rel="stylesheet">
-<link href="../resources/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/newblog.css">
+<link href="${pageContext.request.contextPath }/resources/css/prettify.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 <title>新建博客</title>
 </head>
@@ -20,11 +19,18 @@
 	<div class="container">
 		<form id="newForm" action="${pageContext.request.contextPath }/blog/doAdd" method="post">
 			<input type="hidden" id="content" name="content" value="">
-		
+			<input type="hidden" id="id" name="id" value="${blog.id }">
+			
 		  <div class="form-group">
 		    <label for="title">标题</label>
 		    <br>
-		    <input style="width: 400px; height: 27px;"  type="text" class="form-control" id="title" name="title">
+		    <input style="width: 400px; height: 27px;"  type="text" class="form-control" id="title" name="title" value="${blog.title }">
+		  </div>
+		  <div class="form-group">
+		  	<label for="">标签</label>
+		  	<br>
+			<select id="labelid" name="label.id">
+			</select>
 		  </div>
 		  <div class="form-group">
 		  	<label for="editor">内容</label>
@@ -37,7 +43,7 @@
 	      <div class="btn-group">
 	        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
 	          <ul class="dropdown-menu">
-	          <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+	          <li><a data-edit="fontSize 4"><font size="4">Huge</font></a></li>
 	          <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
 	          <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
 	          </ul>
@@ -78,7 +84,7 @@
 	      </div>
 	      <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
 	    </div>
-	    	<div id="editor"></div>
+	    	<div id="editor">${blog.content }</div>
 		  </div>
 		  <div class="row">
 		  	<div class="col-md-6" style="text-align: right">
@@ -92,14 +98,30 @@
 	</div>
 	
 	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../resources/js/bootstrap-wysiwyg.js"></script>
-	<script type="text/javascript" src="../resources/js/jquery.hotkeys.js"></script>
-	<script type="text/javascript" src="../resources/js/jquery.base64.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap-wysiwyg.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.hotkeys.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery.base64.js"></script>
 	
 	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url: '/Blog/label',
+				type: 'post',
+				async: false,
+				success: function(labelList) {
+					var options = "";
+					for (var i = 0; i < labelList.length; i++) {
+						var id = labelList[i].id;
+						var labelname = labelList[i].labelName;
+						options += "<option value='" + id + "'>" + labelname + "</option>";
+					}
+					$("#labelid").html(options);
+				}
+			});
+		});
+	
 	  //处理富文本内容，解决中文乱码的问题
-	  $.base64.utf8encode=true;
 	  function dealEncoding() {
 		  $("#content").val($("#editor").html());
 		  $("#newForm").submit();

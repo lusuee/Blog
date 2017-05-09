@@ -1,21 +1,39 @@
 package entity;
 
+import java.sql.Date;
+
 public class Blog {
 
-	private int id;
+	private String id;
 	private String title;
 	private String content;
-	private String author;
 	private String comment;
+	private Label label;
+	private Date createdatetime;
 
-	public int getId() {
+	public Date getCreatedatetime() {
+		return createdatetime;
+	}
+
+	public void setCreatedatetime(Date createdatetime) {
+		this.createdatetime = createdatetime;
+	}
+
+	public Label getLabel() {
+		return label;
+	}
+
+	public void setLabel(Label label) {
+		this.label = label;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
 
 	public String getTitle() {
 		return title;
@@ -31,14 +49,6 @@ public class Blog {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public String getComment() {

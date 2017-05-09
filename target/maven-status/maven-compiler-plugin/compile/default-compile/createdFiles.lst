@@ -1,0 +1,16 @@
+entity\Movie.class
+serviceimpl\BlogServiceImpl.class
+dao\PersonDao.class
+controller\LoginController.class
+serviceimpl\MovieServiceImpl.class
+service\PersonService.class
+controller\HelloController.class
+entity\Person.class
+controller\MovieController.class
+dao\BlogDao.class
+service\MovieService.class
+dao\MovieDao.class
+service\BlogService.class
+entity\Blog.class
+serviceimpl\PersonServiceImpl.class
+controller\BlogController.class

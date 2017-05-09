@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
+<head>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+</head>
 <body>
-
-	<h1>Hello World!</h1>
-	
+	<jsp:include page="general/head.jsp"></jsp:include>
 	<table>
 		<c:forEach items="${movieList }" var="movie">
 			<tr>
@@ -13,7 +14,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-		
-	
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 </body>
 </html>

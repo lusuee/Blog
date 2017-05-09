@@ -7,7 +7,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <title>博客列表</title>
 </head>
 <body>
@@ -28,7 +27,7 @@
 				<c:forEach items="${blogList }" var="blog">
 					<tr>
 						<td><a style="text-decoration: none;" href="${pageContext.request.contextPath }/blog/${blog.id}"><c:out value="${blog.title }"></c:out></a></td>
-						<td><c:out value="${blog.comment }"></c:out></td>
+						<td><c:out value="${blog.createdatetime }"></c:out></td>
 						<td><a href="${pageContext.request.contextPath }/blog/edit/${blog.id}">编辑</a>&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/blog/delete/${blog.id}">删除</a></td>
 					</tr>
 				</c:forEach>

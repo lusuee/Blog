@@ -8,8 +8,12 @@
 <style type="text/css">
 	.title{
 		text-align: center;
-		font-size: 18px;
 		font-family: sans-serif;
+	}
+	.other{
+		vertical-align: middle;
+		margin: 10px 0 15px;
+		font-size: 15px;
 	}
 </style>
 
@@ -18,19 +22,23 @@
 <body>
 	<jsp:include page="../general/head.jsp"></jsp:include>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12 title">
-				<c:out value="${blog.title }"></c:out>
+		<div class="row title">
+			<div class="col-md-12">
+				<h2><c:out value="${blog.title }"></c:out></h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-6"><c:out value="${blog.author }"></c:out></div>
-			<div class="col-md-6"><c:out value="${blog.author }"></c:out></div>
+		<div class="row other">
+			<div class="col-md-2"></div>
+			<div class="col-md-4" style="text-align: right;"><c:out value="${blog.label.labelName }"></c:out></div>
+			<div class="col-md-4"><c:out value="${blog.createdatetime }"></c:out></div>
+			<div class="col-md-2"></div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 				<c:out escapeXml="false" value="${blog.content }"></c:out>
 			</div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 </body>
